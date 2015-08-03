@@ -1,8 +1,8 @@
 <?php
 
 /*
-Plugin Name: Cosmo Themes for Lightroom (WP/LR Extension)
-Description: Cosmo Themes Extension for WP/LR Sync.
+Plugin Name: Cosmo Themes for Lightroom
+Description: Cosmo Themes Extension for Lightroom through the WP/LR Sync plugin.
 Version: 0.1.0
 Author: Jordy Meow
 Author URI: http://www.meow.fr
@@ -139,6 +139,6 @@ class WPLR_Extension_CosmoThemes {
   }
 }
 
-new Meow_WPLR_Sync_Plugin_Collections;
+new WPLR_Extension_CosmoThemes;
 
 ?>
