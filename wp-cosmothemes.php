@@ -12,6 +12,9 @@ class WPLR_Extension_CosmoThemes {
 
   public function __construct() {
 
+    // Init
+    add_filter( 'wplr_extensions', array( $this, 'extensions' ), 10, 1 );
+
     // Reset
     add_action( 'wplr_reset', array( $this, 'reset' ), 10, 0 );
 
@@ -30,6 +33,11 @@ class WPLR_Extension_CosmoThemes {
     add_action( "wplr_remove_media_from_collection", array( $this, 'remove_media_from_collection' ), 10, 2 );
     add_action( "wplr_remove_media", array( $this, 'remove_media' ), 10, 1 );
     add_action( "wplr_remove_collection", array( $this, 'remove_collection' ), 10, 1 );
+  }
+
+  function extensions( $extensions ) {
+    array_push( $extensions, 'Cosmo Themes' );
+    return $extensions;
   }
 
   function reset() {
@@ -119,6 +127,9 @@ class WPLR_Extension_CosmoThemes {
     }
     // Update _post_image_gallery
     update_post_meta( $id, '_post_image_gallery', implode( ',', $ids ) );
+
+    // Add a default featured image if none
+    add_post_meta( $id, '_thumbnail_id', $mediaId, true );
   }
 
   // Remove media from the collection.
