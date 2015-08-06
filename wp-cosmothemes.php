@@ -15,9 +15,6 @@ class WPLR_Extension_CosmoThemes {
     // Init
     add_filter( 'wplr_extensions', array( $this, 'extensions' ), 10, 1 );
 
-    // Reset
-    add_action( 'wplr_reset', array( $this, 'reset' ), 10, 0 );
-
     // Create / Update
     add_action( 'wplr_create_folder', array( $this, 'create_folder' ), 10, 3 );
     add_action( 'wplr_update_folder', array( $this, 'update_folder' ), 10, 2 );
@@ -31,19 +28,17 @@ class WPLR_Extension_CosmoThemes {
     // Media
     add_action( "wplr_add_media_to_collection", array( $this, 'add_media_to_collection' ), 10, 2 );
     add_action( "wplr_remove_media_from_collection", array( $this, 'remove_media_from_collection' ), 10, 2 );
-    add_action( "wplr_remove_media", array( $this, 'remove_media' ), 10, 1 );
     add_action( "wplr_remove_collection", array( $this, 'remove_collection' ), 10, 1 );
+
+    // Extra
+    //add_action( 'wplr_reset', array( $this, 'reset' ), 10, 0 );
+    //add_action( "wplr_clean", array( $this, 'clean' ), 10, 1 );
+    //add_action( "wplr_remove_media", array( $this, 'remove_media' ), 10, 1 );
   }
 
   function extensions( $extensions ) {
     array_push( $extensions, 'Cosmo Themes' );
     return $extensions;
-  }
-
-  function reset() {
-    global $wpdb;
-  	$wpdb->query( "DELETE p FROM $wpdb->posts p INNER JOIN $wpdb->postmeta m ON p.ID = m.post_id WHERE m.meta_key = \"wplr_to_cosmo\"" );
-  	$wpdb->query( "DELETE FROM $wpdb->postmeta WHERE meta_key = \"wplr_to_cosmo\"" );
   }
 
   // Get the Post ID for the LR Collection $lrid (from meta)
@@ -80,7 +75,7 @@ class WPLR_Extension_CosmoThemes {
   function create_folder( $folderId, $inFolderId, $folder ) {
     // Well, we can say that a folder is a collection (we could have use a taxonomy for that too)
     // Let's keep it simple and re-use the create_collection with an additional parameter to avoid having content.
-    $this->create_collection( $folderId, $inFolderId, $folder, true );
+    //$this->create_collection( $folderId, $inFolderId, $folder, true );
   }
 
   // Updated the collection with new information.
@@ -135,11 +130,6 @@ class WPLR_Extension_CosmoThemes {
   // Remove media from the collection.
   function remove_media_from_collection( $mediaId, $collectionId ) {
     $this->add_media_to_collection( $mediaId, $collectionId, true );
-  }
-
-  // The media was physically deleted.
-  function remove_media( $mediaId ) {
-    // No need to do anything.
   }
 
   // The collection was deleted.
