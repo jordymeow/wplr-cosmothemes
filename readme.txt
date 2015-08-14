@@ -1,16 +1,18 @@
-=== Cosmo Themes for Lightroom (WP/LR Extension) ===
+=== Cosmo Themes for Lightroom ===
 Contributors: TigrouMeow
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H2S7S3G4XMJ6J
 Tags: lightroom, image, gallery, media, photo, export, management, admin, sync, synchronization
 Requires at least: 4.0
-Tested up to: 4.2.3
-Stable tag: 0.1.0
+Tested up to: 4.2.4
+Stable tag: 0.1.2
 
 Galleries in Cosmo Themes will be synchronized with Lightroom. This magic requires also the WP/LR Sync plugin to be installed.
 
 == Description ==
 
 Galleries in Cosmo Themes will be synchronized with Lightroom (your photos, collections, and collection sets). This magic requires also the WP/LR Sync plugin to be installed.
+
+For support, please contact Meow Apps and Cosmo Themes since it is a collaborative plugin. You are also welcome to participate in making this plugin better. There is a public GitHub repository for it available at https://github.com/jordymeow/wplr-cosmothemes. Please feel free to contribute :)
 
 Languages: English.
 
